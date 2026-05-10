@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../core/app_colors.dart';
 import 'package:geolocator/geolocator.dart';
 import '../services/location_service.dart';
+import 'ocr_capture_screen.dart';
+import 'upload_queue_screen.dart';
+import 'notifications_screen.dart';
 
 class JobDetailScreen extends StatefulWidget {
   final Map<String, String> job;
@@ -324,9 +327,52 @@ class _JobDetailScreenState extends State<JobDetailScreen> {
                 subtitle: const Text('Upload receipt/job order for OCR.'),
                 trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
                 onTap: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('OCR capture screen will be added next.'),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => OcrCaptureScreen(job: job),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            Card(
+              color: AppColors.card,
+              child: ListTile(
+                leading: const Icon(
+                  Icons.cloud_upload_rounded,
+                  color: AppColors.primary,
+                ),
+                title: const Text('View Upload Queue'),
+                subtitle: const Text('Check pending, synced, and failed uploads.'),
+                trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UploadQueueScreen(),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            Card(
+              color: AppColors.card,
+              child: ListTile(
+                leading: const Icon(
+                  Icons.notifications_none_rounded,
+                  color: AppColors.primary,
+                ),
+                title: const Text('View Notifications'),
+                subtitle: const Text('Check job updates and system alerts.'),
+                trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NotificationsScreen(),
                     ),
                   );
                 },

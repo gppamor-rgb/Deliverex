@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../core/app_colors.dart';
 import 'job_detail_screen.dart';
+import 'upload_queue_screen.dart';
+import 'notifications_screen.dart';
+import 'profile_screen.dart';
 
 class DriverHomeScreen extends StatelessWidget {
   const DriverHomeScreen({super.key});
@@ -31,8 +34,47 @@ class DriverHomeScreen extends StatelessWidget {
         backgroundColor: AppColors.background,
         actions: [
           IconButton(
-            onPressed: () {},
+            tooltip: 'Upload Queue',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const UploadQueueScreen(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.cloud_upload_rounded),
+          ),
+          IconButton(
+            tooltip: 'Notifications',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NotificationsScreen(),
+                ),
+              );
+            },
             icon: const Icon(Icons.notifications_none_rounded),
+          ),
+          IconButton(
+            tooltip: 'Profile',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfileScreen(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.person_outline_rounded),
+          ),
+          IconButton(
+            tooltip: 'Logout',
+            onPressed: () {
+              Navigator.popUntil(context, (route) => route.isFirst);
+            },
+            icon: const Icon(Icons.logout_rounded),
           ),
         ],
       ),
