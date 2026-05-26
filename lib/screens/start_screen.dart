@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import '../core/app_colors.dart';
-import 'driver_login_screen.dart';
-import 'customer_login_screen.dart';
 import 'customer_signup_screen.dart';
 import 'tracking_screen.dart';
 import 'chatbot_screen.dart';
+import 'login_screen.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -62,30 +61,14 @@ class StartScreen extends StatelessWidget {
                   const SizedBox(height: 40),
 
                   _StartButton(
-                    label: 'Driver Login',
-                    icon: Icons.badge_rounded,
+                    label: 'Login',
+                    icon: Icons.login_rounded,
                     color: AppColors.primary,
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const DriverLoginScreen(),
-                        ),
-                      );
-                    },
-                  ),
-
-                  const SizedBox(height: 12),
-
-                  _StartButton(
-                    label: 'Customer Login',
-                    icon: Icons.person_rounded,
-                    color: AppColors.secondary,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CustomerLoginScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },
@@ -125,7 +108,7 @@ class StartScreen extends StatelessWidget {
                   const SizedBox(height: 12),
 
                   _OutlineStartButton(
-                    label: 'Inquiry / Chatbot',
+                    label: 'Chatbot',
                     icon: Icons.chat_bubble_outline_rounded,
                     onPressed: () {
                       Navigator.push(
